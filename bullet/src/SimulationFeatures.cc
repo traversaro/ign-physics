@@ -85,11 +85,11 @@ void SimulationFeatures::UpdateJoints()
       hinge->getRigidBodyB().getWorldTransform().getBasis() *
       hingeAxisLocalB;
 
-      btVector3 hingeTorqueA = -damping_force * hingeAxisWorldA;
+      btVector3 hingeTorqueA = damping_force * hingeAxisWorldA;
       btVector3 hingeTorqueB = damping_force * hingeAxisWorldB;
 
-      hinge->getRigidBodyA().applyTorque(hingeTorqueA);
-      hinge->getRigidBodyB().applyTorque(hingeTorqueB);
+      hinge->getRigidBodyA().applyTorque(-hingeTorqueA);
+      hinge->getRigidBodyB().applyTorque(-hingeTorqueB);
     }
   }
 }

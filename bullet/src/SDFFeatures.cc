@@ -84,6 +84,7 @@ Identity SDFFeatures::ConstructSdfLink(
   const std::string name = _sdfLink.Name();
   const math::Pose3d pose = _sdfLink.RawPose();
   const ignition::math::Inertiald inertial = _sdfLink.Inertial();
+  // const auto inertial_pose = inertial.Pose(); TODO We need to do something with this
   auto mass = inertial.MassMatrix().Mass();
   const auto diagonalMoments = inertial.MassMatrix().DiagonalMoments();
 
