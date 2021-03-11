@@ -32,20 +32,20 @@ Identity EntityManagementFeatures::ConstructEmptyWorld(
     const Identity &/*_engineID*/, const std::string &_name)
 {
   // Create bullet empty multibody dynamics world
-  btDefaultCollisionConfiguration* collisionConfiguration =
-    new btDefaultCollisionConfiguration();
-  btCollisionDispatcher* dispatcher =
-    new btCollisionDispatcher(collisionConfiguration);
-  btBroadphaseInterface* broadphase = new btDbvtBroadphase();
-
-  auto solver = new btSequentialImpulseConstraintSolver;
-  auto world = new btDiscreteDynamicsWorld(
-    dispatcher, broadphase, solver, collisionConfiguration);
+  const auto collisionConfiguration = std::make_shared<btDefaultCollisionConfiguration>();
+  const auto dispatcher =
+    std::make_shared<btCollisionDispatcher>(collisionConfiguration.get());
+  //const auto broadphase = std::shared_ptr<btBroadphaseInterface>(new btDbvtBroadphase());
+  const auto broadphase = std::make_shared<btDbvtBroadphase>();
+  const auto solver =
+    std::make_shared<btSequentialImpulseConstraintSolver>();
+  const auto world = std::make_shared<btDiscreteDynamicsWorld>(
+    dispatcher.get(), broadphase.get(), solver.get(), collisionConfiguration.get());
 
   /* TO-DO(Lobotuerk): figure out if this line does something */
   world->getSolverInfo().m_globalCfm = 0;
 
-  btGImpactCollisionAlgorithm::registerAlgorithm(dispatcher);
+  btGImpactCollisionAlgorithm::registerAlgorithm(dispatcher.get());
 
   return this->AddWorld(
     {world, _name, collisionConfiguration, dispatcher, broadphase, solver});
@@ -73,9 +73,7 @@ bool EntityManagementFeatures::RemoveModel(const Identity &_modelID)
     const auto &childLinkInfo = this->links[jointInfo->childLinkId];
     if (childLinkInfo->model.id == _modelID.id)
     {
-      btTypedConstraint* constraint = jointInfo->joint;
-      bulletWorld->removeConstraint(constraint);
-      delete constraint;
+      bulletWorld->removeConstraint(jointInfo->joint.get());
       joint_it = this->joints.erase(joint_it);
       continue;
     }
@@ -90,7 +88,6 @@ bool EntityManagementFeatures::RemoveModel(const Identity &_modelID)
     const auto &collisionInfo = collision_it->second;
     if (collisionInfo->model.id == _modelID.id)
     {
-      delete collisionInfo->shape;
       collision_it = this->collisions.erase(collision_it);
       continue;
     }
@@ -105,8 +102,7 @@ bool EntityManagementFeatures::RemoveModel(const Identity &_modelID)
     const auto &linkInfo = it->second;
     if (linkInfo->model.id == _modelID.id)
     {
-      bulletWorld->removeRigidBody(linkInfo->link);
-      delete linkInfo->link;
+      bulletWorld->removeRigidBody(linkInfo->link.get());
       it = this->links.erase(it);
       continue;
     }
@@ -149,9 +145,7 @@ bool EntityManagementFeatures::RemoveModelByIndex(
     const auto &childLinkInfo = this->links[jointInfo->childLinkId];
     if (childLinkInfo->model.id == _modelIndex)
     {
-      btTypedConstraint* constraint = jointInfo->joint;
-      bulletWorld->removeConstraint(constraint);
-      delete constraint;
+      bulletWorld->removeConstraint(jointInfo->joint.get());
       joint_it = this->joints.erase(joint_it);
       continue;
     }
@@ -166,7 +160,6 @@ bool EntityManagementFeatures::RemoveModelByIndex(
     const auto &collisionInfo = collision_it->second;
     if (collisionInfo->model.id == _modelIndex)
     {
-      delete collisionInfo->shape;
       collision_it = this->collisions.erase(collision_it);
       continue;
     }
@@ -182,7 +175,7 @@ bool EntityManagementFeatures::RemoveModelByIndex(
 
     if (linkInfo->model.id == _modelIndex)
     {
-      bulletWorld->removeRigidBody(linkInfo->link);
+      bulletWorld->removeRigidBody(linkInfo->link.get());
       it = this->links.erase(it);
       continue;
     }

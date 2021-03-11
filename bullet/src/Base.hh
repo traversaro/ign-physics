@@ -46,12 +46,12 @@ namespace bullet {
 // todo(anyone): Handle cleaning these pointers
 struct WorldInfo
 {
-  btDiscreteDynamicsWorld* world;
+  std::shared_ptr<btDiscreteDynamicsWorld> world;
   std::string name;
-  btDefaultCollisionConfiguration* collisionConfiguration;
-  btCollisionDispatcher* dispatcher;
-  btBroadphaseInterface* broadphase;
-  btConstraintSolver* solver;
+  std::shared_ptr<btDefaultCollisionConfiguration> collisionConfiguration;
+  std::shared_ptr<btCollisionDispatcher> dispatcher;
+  std::shared_ptr<btBroadphaseInterface> broadphase;
+  std::shared_ptr<btConstraintSolver> solver;
 };
 
 struct ModelInfo
@@ -66,17 +66,19 @@ struct ModelInfo
 struct LinkInfo
 {
   std::string name;
-  btRigidBody* link;
+  std::shared_ptr<btRigidBody> link;
   Identity model;
   math::Pose3d pose;
   double mass;
   btVector3 inertia;
+  std::shared_ptr<btDefaultMotionState> motionState;
+  std::shared_ptr<btCompoundShape> btCollisionShape;
 };
 
 struct CollisionInfo
 {
   std::string name;
-  btCollisionShape* shape;
+  std::shared_ptr<btCollisionShape> shape;
   Identity link;
   Identity model;
   math::Pose3d pose;
@@ -87,7 +89,7 @@ struct JointInfo
   std::string name;
   // Base class for all the constraint objects,
   // Not sure atm if it's possible to have it to manage all derived classes
-  btTypedConstraint* joint;
+  std::shared_ptr<btTypedConstraint> joint;
   // links associated with this constraint, not sure if needed
   std::size_t childLinkId;
   std::size_t parentLinkId;

@@ -43,7 +43,7 @@ void SimulationFeatures::UpdateJoints()
     auto jointInfo = this->joints.at(jointId);
     double damping = jointInfo->damping;
     btHingeAccumulatedAngleConstraint* hinge =
-      static_cast<btHingeAccumulatedAngleConstraint*>(jointInfo->joint);
+      static_cast<btHingeAccumulatedAngleConstraint*>(jointInfo->joint.get());
     /* TO-DO(Lobotuerk): Move the velocity getter
     to a common place to be reusable */
     if (hinge)
@@ -59,7 +59,7 @@ void SimulationFeatures::UpdateJoints()
 
       if (this->links.find(jointInfo->childLinkId) != this->links.end())
       {
-        btRigidBody *childLink = this->links.at(jointInfo->childLinkId)->link;
+        btRigidBody *childLink = this->links.at(jointInfo->childLinkId)->link.get();
         btVector3 aux = childLink->getAngularVelocity();
         math::Vector3 angularVelocity(aux[0], aux[1], aux[2]);
         result += globalAxis.Dot(angularVelocity);
@@ -67,7 +67,7 @@ void SimulationFeatures::UpdateJoints()
       if (this->links.find(jointInfo->parentLinkId) != this->links.end())
       {
         btRigidBody *parentLink =
-          this->links.at(jointInfo->parentLinkId)->link;
+          this->links.at(jointInfo->parentLinkId)->link.get();
         btVector3 aux = parentLink->getAngularVelocity();
         math::Vector3 angularVelocity(aux[0], aux[1], aux[2]);
         result -= globalAxis.Dot(angularVelocity);
