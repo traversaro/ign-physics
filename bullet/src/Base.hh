@@ -46,12 +46,12 @@ namespace bullet {
 // todo(anyone): Handle cleaning these pointers
 struct WorldInfo
 {
-  std::shared_ptr<btDiscreteDynamicsWorld> world;
   std::string name;
   std::shared_ptr<btDefaultCollisionConfiguration> collisionConfiguration;
   std::shared_ptr<btCollisionDispatcher> dispatcher;
   std::shared_ptr<btBroadphaseInterface> broadphase;
   std::shared_ptr<btConstraintSolver> solver;
+  std::shared_ptr<btDiscreteDynamicsWorld> world;
 };
 
 struct ModelInfo
@@ -66,13 +66,13 @@ struct ModelInfo
 struct LinkInfo
 {
   std::string name;
-  std::shared_ptr<btRigidBody> link;
   Identity model;
   math::Pose3d pose;
   double mass;
   btVector3 inertia;
   std::shared_ptr<btDefaultMotionState> motionState;
   std::shared_ptr<btCompoundShape> btCollisionShape;
+  std::shared_ptr<btRigidBody> link;
 };
 
 struct CollisionInfo

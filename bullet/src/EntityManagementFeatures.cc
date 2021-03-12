@@ -48,7 +48,7 @@ Identity EntityManagementFeatures::ConstructEmptyWorld(
   btGImpactCollisionAlgorithm::registerAlgorithm(dispatcher.get());
 
   return this->AddWorld(
-    {world, _name, collisionConfiguration, dispatcher, broadphase, solver});
+    {_name, collisionConfiguration, dispatcher, broadphase, solver, world});
 }
 
 /////////////////////////////////////////////////

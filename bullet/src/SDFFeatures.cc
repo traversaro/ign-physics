@@ -128,8 +128,8 @@ Identity SDFFeatures::ConstructSdfLink(
   world->addRigidBody(body.get());
 
   // Generate an identity for it
-  const auto linkIdentity = this->AddLink({name, body, _modelID, pose, mass,
-					   linkInertiaDiag, myMotionState, collisionShape});
+  const auto linkIdentity = this->AddLink({name, _modelID, pose, mass,
+    linkInertiaDiag, myMotionState, collisionShape, body});
   return linkIdentity;
 }
 
