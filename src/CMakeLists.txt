@@ -7,6 +7,11 @@ target_link_libraries(${PROJECT_LIBRARY_TARGET_NAME}
     ${ignition-math${IGN_MATH_VER}_LIBRARIES}
     ignition-plugin${IGN_PLUGIN_VER}::register)
 
+if(MSVC)
+  target_compile_definitions(${PROJECT_LIBRARY_TARGET_NAME} 
+    PUBLIC _ENABLE_EXTENDED_ALIGNED_STORAGE)
+endif()  
+
 target_include_directories(${PROJECT_LIBRARY_TARGET_NAME}
   SYSTEM PUBLIC
     ${EIGEN3_INCLUDE_DIRS})
