@@ -46,7 +46,7 @@ ExternalProject_Add(
 
 add_subdirectory(benchmark)
 add_subdirectory(plugins)
-add_subdirectory(integration)
+#add_subdirectory(integration)
 add_subdirectory(performance)
 add_subdirectory(regression)
 add_subdirectory(static_assert)
