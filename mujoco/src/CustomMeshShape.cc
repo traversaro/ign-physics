@@ -25,9 +25,10 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 namespace {
+  /*
 /////////////////////////////////////////////////
 unsigned int CheckNumVerticesPerFaces(
     const ignition::common::SubMesh &_inputSubmesh,
@@ -220,8 +221,8 @@ CustomMeshShape::CustomMeshShape(
   this->mMesh = scene;
   this->mIsBoundingBoxDirty = true;
   this->mIsVolumeDirty = true;
+}*/
 }
-
 }
 }
 }

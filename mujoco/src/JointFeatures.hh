@@ -15,8 +15,8 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_JOINTFEATURES_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_JOINTFEATURES_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_JOINTFEATURES_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_JOINTFEATURES_HH_
 
 #include <string>
 
@@ -30,7 +30,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 struct JointFeatureList : FeatureList<
   GetBasicJointState,

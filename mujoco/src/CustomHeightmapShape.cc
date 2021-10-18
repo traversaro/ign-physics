@@ -24,9 +24,10 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /////////////////////////////////////////////////
+/*
 CustomHeightmapShape::CustomHeightmapShape(
     const common::HeightmapData &_input,
     const Eigen::Vector3d &_size,
@@ -67,7 +68,7 @@ CustomHeightmapShape::CustomHeightmapShape(
 
   this->setHeightField(vertSize, vertSize, heightsFloat);
   this->setScale(Vector3(scale.X(), scale.Y(), 1));
-}
+}*/
 }
 }
 }

@@ -15,8 +15,8 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_KINEMATICSFEATURES_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_KINEMATICSFEATURES_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_KINEMATICSFEATURES_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_KINEMATICSFEATURES_HH_
 
 #include <ignition/physics/FrameSemantics.hh>
 #include <ignition/physics/FreeGroup.hh>
@@ -25,7 +25,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 struct KinematicsFeatureList : FeatureList<
   LinkFrameSemantics,
@@ -40,7 +40,7 @@ class KinematicsFeatures :
 {
   public: FrameData3d FrameDataRelativeToWorld(const FrameID &_id) const;
 
-  public: const dart::dynamics::Frame *SelectFrame(const FrameID &_id) const;
+  //public: const dart::dynamics::Frame *SelectFrame(const FrameID &_id) const;
 };
 
 }

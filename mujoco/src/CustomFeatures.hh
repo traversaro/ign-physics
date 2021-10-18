@@ -20,25 +20,14 @@
 
 #include <ignition/physics/Implements.hh>
 
-#include <ignition/physics/dartsim/World.hh>
+#include <ignition/physics/mujoco/World.hh>
 
 #include "Base.hh"
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
-using CustomFeatureList = FeatureList<
-  RetrieveWorld
->;
-
-class CustomFeatures :
-    public virtual Base,
-    public virtual Implements3d<CustomFeatureList>
-{
-  public: dart::simulation::WorldPtr GetDartsimWorld(
-      const Identity &_worldID) override;
-};
 
 }
 }

@@ -18,6 +18,7 @@
 #include <memory>
 #include <string>
 
+/*
 #include <dart/collision/bullet/BulletCollisionDetector.hpp>
 #include <dart/collision/dart/DARTCollisionDetector.hpp>
 #include <dart/collision/fcl/FCLCollisionDetector.hpp>
@@ -26,7 +27,7 @@
 #include <dart/constraint/ConstraintSolver.hpp>
 #include <dart/constraint/DantzigBoxedLcpSolver.hpp>
 #include <dart/constraint/PgsBoxedLcpSolver.hpp>
-#include <dart/simulation/World.hpp>
+#include <dart/simulation/World.hpp>*/
 
 #include <ignition/common/Console.hh>
 
@@ -34,12 +35,14 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /////////////////////////////////////////////////
 void WorldFeatures::SetWorldCollisionDetector(
     const Identity &_id, const std::string &_collisionDetector)
 {
+  return;
+  /*
   auto world = this->ReferenceInterface<dart::simulation::World>(_id);
   auto collisionDetector =
        world->getConstraintSolver()->getCollisionDetector();
@@ -69,37 +72,45 @@ void WorldFeatures::SetWorldCollisionDetector(
   world->getConstraintSolver()->setCollisionDetector(collisionDetector);
 
   ignmsg << "Using [" << world->getConstraintSolver()->getCollisionDetector()
-      ->getType() << "] collision detector" << std::endl;
+      ->getType() << "] collision detector" << std::endl;*/
 }
 
 /////////////////////////////////////////////////
 const std::string &WorldFeatures::GetWorldCollisionDetector(const Identity &_id)
     const
 {
+  return std::string();
+  /*
   auto world = this->ReferenceInterface<dart::simulation::World>(_id);
-  return world->getConstraintSolver()->getCollisionDetector()->getType();
+  return world->getConstraintSolver()->getCollisionDetector()->getType();*/
 }
 
 /////////////////////////////////////////////////
 void WorldFeatures::SetWorldGravity(
     const Identity &_id, const LinearVectorType &_gravity)
 {
+  return;
+  /*
   auto world = this->ReferenceInterface<dart::simulation::World>(_id);
-  world->setGravity(_gravity);
+  world->setGravity(_gravity);*/
 }
 
 /////////////////////////////////////////////////
 WorldFeatures::LinearVectorType WorldFeatures::GetWorldGravity(
     const Identity &_id) const
 {
+  return WorldFeatures::LinearVectorType();
+  /*
   auto world = this->ReferenceInterface<dart::simulation::World>(_id);
-  return world->getGravity();
+  return world->getGravity();*/
 }
 
 /////////////////////////////////////////////////
 void WorldFeatures::SetWorldSolver(const Identity &_id,
     const std::string &_solver)
 {
+  return;
+  /*
   auto world = this->ReferenceInterface<dart::simulation::World>(_id);
 
   auto solver =
@@ -134,12 +145,14 @@ void WorldFeatures::SetWorldSolver(const Identity &_id,
     solver->setBoxedLcpSolver(boxedSolver);
 
   ignmsg << "Using [" << solver->getBoxedLcpSolver()->getType()
-         << "] solver." << std::endl;
+         << "] solver." << std::endl;*/
 }
 
 /////////////////////////////////////////////////
 const std::string &WorldFeatures::GetWorldSolver(const Identity &_id) const
 {
+  return std::string();
+  /*
   auto world = this->ReferenceInterface<dart::simulation::World>(_id);
 
   auto solver =
@@ -152,7 +165,7 @@ const std::string &WorldFeatures::GetWorldSolver(const Identity &_id) const
     return empty;
   }
 
-  return solver->getBoxedLcpSolver()->getType();
+  return solver->getBoxedLcpSolver()->getType();*/
 }
 
 }

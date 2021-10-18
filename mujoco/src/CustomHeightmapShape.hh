@@ -15,21 +15,23 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_CUSTOMHEIGHTMAPSHAPE_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_CUSTOMHEIGHTMAPSHAPE_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_CUSTOMHEIGHTMAPSHAPE_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_CUSTOMHEIGHTMAPSHAPE_HH_
 
-#include <dart/dynamics/HeightmapShape.hpp>
+//#include <dart/dynamics/HeightmapShape.hpp>
 #include <ignition/common/HeightmapData.hh>
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /// \brief This class creates a custom derivative of dartsim's HeightmapShape
 /// class which allows an ignition::common::Heightmap to be converted into a
 /// HeightmapShape that can be used by dartsim.
 /// Using float precision because Bullet's collision detector doesn't support
 /// double. common::HeightmapData also holds floats.
+// TODO: implement mujoco version
+/*
 class CustomHeightmapShape : public dart::dynamics::HeightmapShape<float>
 {
   /// \brief Constructor
@@ -41,6 +43,7 @@ class CustomHeightmapShape : public dart::dynamics::HeightmapShape<float>
       const Eigen::Vector3d &_size,
       const int _subSampling);
 };
+*/
 }
 }
 }

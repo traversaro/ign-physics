@@ -18,8 +18,9 @@
 #include <unordered_map>
 #include <utility>
 
+/*
 #include <dart/collision/CollisionObject.hpp>
-#include <dart/collision/CollisionResult.hpp>
+#include <dart/collision/CollisionResult.hpp>*/
 
 #include <ignition/common/Profiler.hh>
 
@@ -32,7 +33,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 void SimulationFeatures::WorldForwardStep(
     const Identity &_worldID,
@@ -40,6 +41,8 @@ void SimulationFeatures::WorldForwardStep(
     ForwardStep::State & /*_x*/,
     const ForwardStep::Input & _u)
 {
+  return;
+  /*
   IGN_PROFILE("SimulationFeatures::WorldForwardStep");
   auto *world = this->ReferenceInterface<DartWorld>(_worldID);
   auto *dtDur =
@@ -60,11 +63,12 @@ void SimulationFeatures::WorldForwardStep(
   // TODO(MXG): Parse input
   world->step();
   this->Write(_h.Get<ChangedWorldPoses>());
-  // TODO(MXG): Fill in state
+  // TODO(MXG): Fill in state*/
 }
 
 void SimulationFeatures::Write(ChangedWorldPoses &_changedPoses) const
 {
+  /*
   // remove link poses from the previous iteration
   _changedPoses.entries.clear();
   _changedPoses.entries.reserve(this->links.size());
@@ -99,13 +103,16 @@ void SimulationFeatures::Write(ChangedWorldPoses &_changedPoses) const
   // Save the new poses so that they can be used to check for updates in the
   // next iteration. Re-setting this->prevLinkPoses with the contents of
   // newPoses ensures that we aren't caching data for links that were removed
-  this->prevLinkPoses = std::move(newPoses);
+  this->prevLinkPoses = std::move(newPoses);*/
 }
 
 std::vector<SimulationFeatures::ContactInternal>
 SimulationFeatures::GetContactsFromLastStep(const Identity &_worldID) const
 {
+  
   std::vector<SimulationFeatures::ContactInternal> outContacts;
+  return outContacts;
+  /*
   auto *const world = this->ReferenceInterface<DartWorld>(_worldID);
   const auto colResult = world->getLastCollisionResult();
 
@@ -144,7 +151,7 @@ SimulationFeatures::GetContactsFromLastStep(const Identity &_worldID) const
            dtContact.point, extraData});
     }
   }
-  return outContacts;
+  return outContacts;*/
 }
 }
 }

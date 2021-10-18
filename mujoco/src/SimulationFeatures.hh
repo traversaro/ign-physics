@@ -15,8 +15,8 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_SIMULATIONFEATURES_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_SIMULATIONFEATURES_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_SIMULATIONFEATURES_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_SIMULATIONFEATURES_HH_
 
 #include <vector>
 #include <unordered_map>
@@ -32,7 +32,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 struct SimulationFeatureList : FeatureList<
   ForwardStep,

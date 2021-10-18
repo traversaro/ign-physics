@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Open Source Robotics Foundation
+ * Copyright (C) 2021 Open Source Robotics Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_FREEGROUPFEATURES_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_FREEGROUPFEATURES_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_FREEGROUPFEATURES_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_FREEGROUPFEATURES_HH_
 
 #include <ignition/physics/FreeGroup.hh>
 
@@ -24,13 +24,11 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
-struct FreeGroupFeatureList : FeatureList<
+struct FreeGroupFeatureList : ignition::physics::FeatureList<
   FindFreeGroupFeature,
-  SetFreeGroupWorldPose,
-  SetFreeGroupWorldVelocity
-  // Note: FreeGroupFrameSemantics is covered in KinematicsFeatures.hh
+  SetFreeGroupWorldPose
 > { };
 
 class FreeGroupFeatures
@@ -44,33 +42,14 @@ class FreeGroupFeatures
 
   Identity GetFreeGroupRootLink(const Identity &_groupID) const override;
 
-  struct FreeGroupInfo
-  {
-    /// \brief Pointer to the root link
-    DartBodyNode *link;
-
-    /// \brief If the FreeGroup is wrapping an entire model, then this will
-    /// contain a pointer to that model
-    DartSkeleton *model;
-  };
-
-  FreeGroupInfo GetCanonicalInfo(const Identity &_groupID) const;
-
+  // ----- SetFreeGroupWorldPose -----
   void SetFreeGroupWorldPose(
       const Identity &_groupID,
       const PoseType &_pose) override;
-
-  void SetFreeGroupWorldLinearVelocity(
-      const Identity &_groupID,
-      const LinearVelocity &_linearVelocity) override;
-
-  void SetFreeGroupWorldAngularVelocity(
-      const Identity &_groupID,
-      const AngularVelocity &_angularVelocity) override;
 };
 
-}
-}
-}
+}  // namespace mujoco
+}  // namespace physics
+}  // namespace ignition
 
 #endif

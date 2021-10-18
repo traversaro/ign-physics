@@ -19,15 +19,16 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /////////////////////////////////////////////////
+/*
 dart::simulation::WorldPtr CustomFeatures::GetDartsimWorld(
     const Identity &_worldID)
 {
   return this->worlds.at(_worldID);
 }
-
+*/
 }
 }
 }

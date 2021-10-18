@@ -15,43 +15,15 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_WORLD_HH_
-#define IGNITION_PHYSICS_DARTSIM_WORLD_HH_
-
-#include <dart/simulation/World.hpp>
+#ifndef IGNITION_PHYSICS_MUJOCO_WORLD_HH_
+#define IGNITION_PHYSICS_MUJOCO_WORLD_HH_
 
 #include <ignition/physics/FeatureList.hh>
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
-/////////////////////////////////////////////////
-class RetrieveWorld : public virtual Feature
-{
-  public: template <typename PolicyT, typename FeaturesT>
-  class World : public virtual Feature::World<PolicyT, FeaturesT>
-  {
-    /// \brief Get the underlying dartsim world for this World object.
-    public: dart::simulation::WorldPtr GetDartsimWorld();
-  };
-
-  public: template <typename PolicyT>
-  class Implementation : public virtual Feature::Implementation<PolicyT>
-  {
-    public: virtual dart::simulation::WorldPtr GetDartsimWorld(
-        const Identity &_worldID) = 0;
-  };
-};
-
-/////////////////////////////////////////////////
-template <typename PolicyT, typename FeaturesT>
-dart::simulation::WorldPtr RetrieveWorld::World<PolicyT, FeaturesT>
-::GetDartsimWorld()
-{
-  return this->template Interface<RetrieveWorld>()
-      ->GetDartsimWorld(this->identity);
-}
 
 }
 }

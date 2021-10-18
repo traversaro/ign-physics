@@ -30,7 +30,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 struct EntityManagementFeatureList : FeatureList<
   GetEntities,

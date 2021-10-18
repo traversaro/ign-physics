@@ -15,58 +15,53 @@
  *
 */
 
-#include <dart/dynamics/BodyNode.hpp>
-#include <dart/dynamics/Joint.hpp>
-#include <dart/dynamics/FreeJoint.hpp>
-#include <dart/dynamics/PrismaticJoint.hpp>
-#include <dart/dynamics/RevoluteJoint.hpp>
-#include <dart/dynamics/WeldJoint.hpp>
-
 #include "JointFeatures.hh"
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /////////////////////////////////////////////////
 double JointFeatures::GetJointPosition(
     const Identity &_id, const std::size_t _dof) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)->joint->getPosition(_dof);
+  return 0.0; //this->ReferenceInterface<JointInfo>(_id)->joint->getPosition(_dof);
 }
 
 /////////////////////////////////////////////////
 double JointFeatures::GetJointVelocity(
     const Identity &_id, const std::size_t _dof) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)->joint->getVelocity(_dof);
+  return 0.0; //this->ReferenceInterface<JointInfo>(_id)->joint->getVelocity(_dof);
 }
 
 /////////////////////////////////////////////////
 double JointFeatures::GetJointAcceleration(
     const Identity &_id, const std::size_t _dof) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)->joint->getAcceleration(_dof);
+  return 0.0; //this->ReferenceInterface<JointInfo>(_id)->joint->getAcceleration(_dof);
 }
 
 /////////////////////////////////////////////////
 double JointFeatures::GetJointForce(
     const Identity &_id, const std::size_t _dof) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)->joint->getForce(_dof);
+  return 0.0;//this->ReferenceInterface<JointInfo>(_id)->joint->getForce(_dof);
 }
 
 /////////////////////////////////////////////////
 Pose3d JointFeatures::GetJointTransform(const Identity &_id) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)
-      ->joint->getRelativeTransform();
+  return Pose3d(); //this->ReferenceInterface<JointInfo>(_id)
+      //->joint->getRelativeTransform();
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointPosition(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is finite. A nan can cause the DART
@@ -79,13 +74,15 @@ void JointFeatures::SetJointPosition(
            << "]. The value will be ignored\n";
     return;
   }
-  joint->setPosition(_dof, _value);
+  joint->setPosition(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointVelocity(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is finite. A nan can cause the DART
@@ -98,13 +95,15 @@ void JointFeatures::SetJointVelocity(
            << "]. The value will be ignored\n";
     return;
   }
-  joint->setVelocity(_dof, _value);
+  joint->setVelocity(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointAcceleration(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is finite. A nan can cause the DART
@@ -117,13 +116,15 @@ void JointFeatures::SetJointAcceleration(
            << "]. The value will be ignored\n";
     return;
   }
-  joint->setAcceleration(_dof, _value);
+  joint->setAcceleration(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointForce(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return; 
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is finite. A nan can cause the DART
@@ -140,13 +141,15 @@ void JointFeatures::SetJointForce(
   {
     joint->setActuatorType(dart::dynamics::Joint::FORCE);
   }
-  this->ReferenceInterface<JointInfo>(_id)->joint->setCommand(_dof, _value);
+  this->ReferenceInterface<JointInfo>(_id)->joint->setCommand(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointVelocityCommand(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is finite. A nan can cause the DART
@@ -181,13 +184,15 @@ void JointFeatures::SetJointVelocityCommand(
     }
   }
 
-  joint->setCommand(_dof, _value);
+  joint->setCommand(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointMinPosition(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is valid. A nan can cause the DART
@@ -206,13 +211,15 @@ void JointFeatures::SetJointMinPosition(
   joint->setPositionLimitEnforced(true);
 #endif
   // We do not check min/max mismatch, we leave that to DART.
-  joint->setPositionLowerLimit(_dof, _value);
+  joint->setPositionLowerLimit(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointMaxPosition(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is valid. A nan can cause the DART
@@ -231,13 +238,15 @@ void JointFeatures::SetJointMaxPosition(
   joint->setPositionLimitEnforced(true);
 #endif
   // We do not check min/max mismatch, we leave that to DART.
-  joint->setPositionUpperLimit(_dof, _value);
+  joint->setPositionUpperLimit(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointMinVelocity(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is valid. A nan can cause the DART
@@ -256,13 +265,15 @@ void JointFeatures::SetJointMinVelocity(
   joint->setPositionLimitEnforced(true);
 #endif
   // We do not check min/max mismatch, we leave that to DART.
-  joint->setVelocityLowerLimit(_dof, _value);
+  joint->setVelocityLowerLimit(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointMaxVelocity(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is valid. A nan can cause the DART
@@ -281,13 +292,15 @@ void JointFeatures::SetJointMaxVelocity(
   joint->setPositionLimitEnforced(true);
 #endif
   // We do not check min/max mismatch, we leave that to DART.
-  joint->setVelocityUpperLimit(_dof, _value);
+  joint->setVelocityUpperLimit(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointMinEffort(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is valid. A nan can cause the DART
@@ -301,13 +314,15 @@ void JointFeatures::SetJointMinEffort(
     return;
   }
   // We do not check min/max mismatch, we leave that to DART.
-  joint->setForceLowerLimit(_dof, _value);
+  joint->setForceLowerLimit(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointMaxEffort(
     const Identity &_id, const std::size_t _dof, const double _value)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_id)->joint;
 
   // Take extra care that the value is valid. A nan can cause the DART
@@ -321,48 +336,52 @@ void JointFeatures::SetJointMaxEffort(
     return;
   }
   // We do not check min/max mismatch, we leave that to DART.
-  joint->setForceUpperLimit(_dof, _value);
+  joint->setForceUpperLimit(_dof, _value);*/
 }
 
 /////////////////////////////////////////////////
 std::size_t JointFeatures::GetJointDegreesOfFreedom(const Identity &_id) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)->joint->getNumDofs();
+  return 0; //this->ReferenceInterface<JointInfo>(_id)->joint->getNumDofs();
 }
 
 /////////////////////////////////////////////////
 Pose3d JointFeatures::GetJointTransformFromParent(const Identity &_id) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)
-      ->joint->getTransformFromParentBodyNode();
+  return Pose3d(); // this->ReferenceInterface<JointInfo>(_id)
+      //->joint->getTransformFromParentBodyNode();
 }
 
 /////////////////////////////////////////////////
 Pose3d JointFeatures::GetJointTransformToChild(const Identity &_id) const
 {
-  return this->ReferenceInterface<JointInfo>(_id)
-      ->joint->getTransformFromChildBodyNode().inverse();
+  return Pose3d(); // this->ReferenceInterface<JointInfo>(_id)
+     // ->joint->getTransformFromChildBodyNode().inverse();
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointTransformFromParent(
     const Identity &_id, const Pose3d &_pose)
 {
-  this->ReferenceInterface<JointInfo>(_id)
-      ->joint->setTransformFromParentBodyNode(_pose);
+  return;
+  //this->ReferenceInterface<JointInfo>(_id)
+  //    ->joint->setTransformFromParentBodyNode(_pose);
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetJointTransformToChild(
     const Identity &_id, const Pose3d &_pose)
 {
-  this->ReferenceInterface<JointInfo>(_id)
-      ->joint->setTransformFromChildBodyNode(_pose.inverse());
+  return;
+  //this->ReferenceInterface<JointInfo>(_id)
+  //    ->joint->setTransformFromChildBodyNode(_pose.inverse());
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::DetachJoint(const Identity &_jointId)
 {
+  return;
+  /*
   auto joint = this->ReferenceInterface<JointInfo>(_jointId)->joint;
   if (joint->getType() == "FreeJoint")
   {
@@ -431,13 +450,16 @@ void JointFeatures::DetachJoint(const Identity &_jointId)
           dart::dynamics::Frame::World());
   // TODO(addisu) Remove incrementVersion once DART has been updated to
   // internally increment the BodyNode's version after moveTo.
-  child->incrementVersion();
+  child->incrementVersion();*/
 }
 
 /////////////////////////////////////////////////
 Identity JointFeatures::CastToFixedJoint(
     const Identity &_jointID) const
 {
+  return this->GenerateInvalidId();
+  
+  /*
   dart::dynamics::WeldJoint *const weld =
       dynamic_cast<dart::dynamics::WeldJoint *>(
           this->ReferenceInterface<JointInfo>(_jointID)->joint.get());
@@ -445,7 +467,7 @@ Identity JointFeatures::CastToFixedJoint(
   if (weld)
     return this->GenerateIdentity(_jointID, this->Reference(_jointID));
 
-  return this->GenerateInvalidId();
+  return this->GenerateInvalidId();*/
 }
 
 /////////////////////////////////////////////////
@@ -454,6 +476,8 @@ Identity JointFeatures::AttachFixedJoint(
     const BaseLink3dPtr &_parent,
     const std::string &_name)
 {
+  return this->GenerateInvalidId();
+  /*
   auto linkInfo = this->ReferenceInterface<LinkInfo>(_childID);
   DartBodyNode *const bn = linkInfo->link.get();
   dart::dynamics::WeldJoint::Properties properties;
@@ -481,13 +505,15 @@ Identity JointFeatures::AttachFixedJoint(
   // TODO(addisu) Remove incrementVersion once DART has been updated to
   // internally increment the BodyNode's version after moveTo.
   bn->incrementVersion();
-  return this->GenerateIdentity(jointID, this->joints.at(jointID));
+  return this->GenerateIdentity(jointID, this->joints.at(jointID));*/
 }
 
 /////////////////////////////////////////////////
 Identity JointFeatures::CastToFreeJoint(
     const Identity &_jointID) const
 {
+  return this->GenerateInvalidId();
+  /*
   auto *const freeJoint =
       dynamic_cast<dart::dynamics::FreeJoint *>(
           this->ReferenceInterface<JointInfo>(_jointID)->joint.get());
@@ -495,22 +521,26 @@ Identity JointFeatures::CastToFreeJoint(
   if (freeJoint)
     return this->GenerateIdentity(_jointID, this->Reference(_jointID));
 
-  return this->GenerateInvalidId();
+  return this->GenerateInvalidId();*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetFreeJointRelativeTransform(
     const Identity &_jointID, const Pose3d &_pose)
 {
+  return;
+  /*
   static_cast<dart::dynamics::FreeJoint *>(
       this->ReferenceInterface<JointInfo>(_jointID)->joint.get())
-      ->setRelativeTransform(_pose);
+      ->setRelativeTransform(_pose);*/
 }
 
 /////////////////////////////////////////////////
 Identity JointFeatures::CastToRevoluteJoint(
     const Identity &_jointID) const
 {
+  return this->GenerateInvalidId();
+  /*
   dart::dynamics::RevoluteJoint *const revolute =
       dynamic_cast<dart::dynamics::RevoluteJoint *>(
           this->ReferenceInterface<JointInfo>(_jointID)->joint.get());
@@ -518,24 +548,28 @@ Identity JointFeatures::CastToRevoluteJoint(
   if (revolute)
     return this->GenerateIdentity(_jointID, this->Reference(_jointID));
 
-  return this->GenerateInvalidId();
+  return this->GenerateInvalidId();*/
 }
 
 /////////////////////////////////////////////////
 AngularVector3d JointFeatures::GetRevoluteJointAxis(
     const Identity &_jointID) const
 {
+  return AngularVector3d();
+  /*
   return static_cast<const dart::dynamics::RevoluteJoint*>(
-        this->ReferenceInterface<JointInfo>(_jointID)->joint.get())->getAxis();
+        this->ReferenceInterface<JointInfo>(_jointID)->joint.get())->getAxis();*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetRevoluteJointAxis(
     const Identity &_jointID, const AngularVector3d &_axis)
 {
+  return;
+  /*
   static_cast<dart::dynamics::RevoluteJoint *>(
       this->ReferenceInterface<JointInfo>(_jointID)->joint.get())
-      ->setAxis(_axis);
+      ->setAxis(_axis);*/
 }
 
 /////////////////////////////////////////////////
@@ -545,6 +579,8 @@ Identity JointFeatures::AttachRevoluteJoint(
     const std::string &_name,
     const AngularVector3d &_axis)
 {
+  return this->GenerateInvalidId();
+  /*
   auto linkInfo = this->ReferenceInterface<LinkInfo>(_childID);
   DartBodyNode *const bn = linkInfo->link.get();
   dart::dynamics::RevoluteJoint::Properties properties;
@@ -574,12 +610,15 @@ Identity JointFeatures::AttachRevoluteJoint(
   // internally increment the BodyNode's version after moveTo.
   bn->incrementVersion();
   return this->GenerateIdentity(jointID, this->joints.at(jointID));
+  */
 }
 
 /////////////////////////////////////////////////
 Identity JointFeatures::CastToPrismaticJoint(
     const Identity &_jointID) const
 {
+  return this->GenerateInvalidId();
+  /*
   dart::dynamics::PrismaticJoint *prismatic =
       dynamic_cast<dart::dynamics::PrismaticJoint*>(
         this->ReferenceInterface<JointInfo>(_jointID)->joint.get());
@@ -587,24 +626,27 @@ Identity JointFeatures::CastToPrismaticJoint(
   if (prismatic)
     return this->GenerateIdentity(_jointID, this->Reference(_jointID));
 
-  return this->GenerateInvalidId();
+  return this->GenerateInvalidId();*/
 }
 
 /////////////////////////////////////////////////
 LinearVector3d JointFeatures::GetPrismaticJointAxis(
     const Identity &_jointID) const
 {
+  return LinearVector3d();
+  /*
   return static_cast<const dart::dynamics::PrismaticJoint*>(
-        this->ReferenceInterface<JointInfo>(_jointID)->joint.get())->getAxis();
+        this->ReferenceInterface<JointInfo>(_jointID)->joint.get())->getAxis();*/
 }
 
 /////////////////////////////////////////////////
 void JointFeatures::SetPrismaticJointAxis(
     const Identity &_jointID, const LinearVector3d &_axis)
 {
+  return; /*
   static_cast<dart::dynamics::PrismaticJoint *>(
       this->ReferenceInterface<JointInfo>(_jointID)->joint.get())
-      ->setAxis(_axis);
+      ->setAxis(_axis);*/
 }
 
 /////////////////////////////////////////////////
@@ -614,6 +656,8 @@ Identity JointFeatures::AttachPrismaticJoint(
     const std::string &_name,
     const LinearVector3d &_axis)
 {
+  return this->GenerateInvalidId();
+  /*
   auto linkInfo = this->ReferenceInterface<LinkInfo>(_childID);
   DartBodyNode *const bn = linkInfo->link.get();
   dart::dynamics::PrismaticJoint::Properties properties;
@@ -643,12 +687,15 @@ Identity JointFeatures::AttachPrismaticJoint(
   // internally increment the BodyNode's version after moveTo.
   bn->incrementVersion();
   return this->GenerateIdentity(jointID, this->joints.at(jointID));
+  */
 }
 
 /////////////////////////////////////////////////
 Wrench3d JointFeatures::GetJointTransmittedWrenchInJointFrame(
     const Identity &_id) const
 {
+  return Wrench3d();
+  /*
   auto &joint = this->ReferenceInterface<JointInfo>(_id)->joint;
   auto *childBn = joint->getChildBodyNode();
   if (nullptr == childBn)
@@ -670,7 +717,7 @@ Wrench3d JointFeatures::GetJointTransmittedWrenchInJointFrame(
   Wrench3d wrenchOut;
   wrenchOut.torque = transmittedWrenchInJoint.head<3>();
   wrenchOut.force = transmittedWrenchInJoint.tail<3>();
-  return wrenchOut;
+  return wrenchOut;*/
 }
 }
 }

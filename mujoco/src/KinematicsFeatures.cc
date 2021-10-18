@@ -15,19 +15,20 @@
  *
 */
 
-#include <dart/dynamics/Frame.hpp>
 
 #include <ignition/common/Console.hh>
 #include "KinematicsFeatures.hh"
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /////////////////////////////////////////////////
 FrameData3d KinematicsFeatures::FrameDataRelativeToWorld(
     const FrameID &_id) const
 {
+  return FrameData3d();
+  /*
   FrameData3d data;
 
   // The feature system should never send us the world ID.
@@ -57,13 +58,16 @@ FrameData3d KinematicsFeatures::FrameDataRelativeToWorld(
   data.linearAcceleration = frame->getLinearAcceleration();
   data.angularAcceleration = frame->getAngularAcceleration();
 
-  return data;
+  return data;*/
 }
 
 /////////////////////////////////////////////////
+/*
 const dart::dynamics::Frame *KinematicsFeatures::SelectFrame(
     const FrameID &_id) const
 {
+  return nullptr;
+  
   const auto model_it = this->models.idToObject.find(_id.ID());
   if (model_it != this->models.idToObject.end())
   {
@@ -79,7 +83,7 @@ const dart::dynamics::Frame *KinematicsFeatures::SelectFrame(
   }
 
   return framesIt->second;
-}
+}*/
 
 }
 }

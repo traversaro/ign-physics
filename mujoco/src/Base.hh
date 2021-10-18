@@ -15,13 +15,14 @@
  *
 */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_BASE_HH_
-#define IGNITION_PHYSICS_DARTSIM_BASE_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_BASE_HH_
+#define IGNITION_PHYSICS_MUJOCO_BASE_HH_
 
+/*
 #include <dart/dynamics/BodyNode.hpp>
 #include <dart/dynamics/SimpleFrame.hpp>
 #include <dart/dynamics/Skeleton.hpp>
-#include <dart/simulation/World.hpp>
+#include <dart/simulation/World.hpp>*/
 
 #include <memory>
 #include <string>
@@ -37,7 +38,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /// \brief The structs ModelInfo, LinkInfo, JointInfo, and ShapeInfo are used
 /// for two reasons:
@@ -49,7 +50,7 @@ namespace dartsim {
 ///    create a std::shared_ptr of the struct that wraps the corresponding DART
 ///    shared pointer.
 
-
+/*
 struct LinkInfo
 {
   dart::dynamics::BodyNodePtr link;
@@ -209,9 +210,10 @@ struct EntityStorage
     return false;
   }
 };
-
+*/
 class Base : public Implements3d<FeatureList<Feature>>
 {
+  /*
   public: using DartWorld = dart::simulation::World;
   public: using DartWorldPtr = dart::simulation::WorldPtr;
   public: using DartSkeletonPtr = dart::dynamics::SkeletonPtr;
@@ -227,16 +229,16 @@ class Base : public Implements3d<FeatureList<Feature>>
   public: using LinkInfoPtr = std::shared_ptr<LinkInfo>;
   public: using JointInfoPtr = std::shared_ptr<JointInfo>;
   public: using ShapeInfoPtr = std::shared_ptr<ShapeInfo>;
-
-  public: inline Identity InitiateEngine(std::size_t /*_engineID*/) override
+  */
+  public: inline Identity InitiateEngine(std::size_t _engineID) override
   {
     this->GetNextEntity();
-
+    /*
     // Create a 0th entry in this map
     this->worlds.indexInContainerToID.insert(
           std::make_pair(0u, std::vector<std::size_t>()));
 
-    // dartsim does not have multiple "engines"
+    // dartsim does not have multiple "engines"*/
     return this->GenerateIdentity(0);
   }
 
@@ -246,7 +248,7 @@ class Base : public Implements3d<FeatureList<Feature>>
   }
 
   public: std::size_t entityCount = 0;
-
+  /*
   public: inline std::size_t AddWorld(
       const DartWorldPtr &_world, const std::string &_name)
   {
@@ -297,6 +299,7 @@ class Base : public Implements3d<FeatureList<Feature>>
               const std::size_t _worldID)
   {
     const std::size_t id = this->GetNextEntity();
+    /*
     this->models.idToObject[id] = std::make_shared<ModelInfo>(_info);
     ModelInfo &entry = *this->models.idToObject[id];
     this->models.objectToID[_info.model] = id;
@@ -314,7 +317,7 @@ class Base : public Implements3d<FeatureList<Feature>>
 
     this->models.idToContainerID[id] = _parentID;
     this->frames[id] = _info.frame.get();
-    parentModelInfo->nestedModels.push_back(id);
+    parentModelInfo->nestedModels.push_back(id);*
     return {id, entry};
   }
 
@@ -322,7 +325,7 @@ class Base : public Implements3d<FeatureList<Feature>>
         const std::string &_fullName, std::size_t _modelID)
   {
     const std::size_t id = this->GetNextEntity();
-    auto linkInfo = std::make_shared<LinkInfo>();
+        auto linkInfo = std::make_shared<LinkInfo>();
     this->links.idToObject[id] = linkInfo;
     linkInfo->link = _bn;
     // The name of the BodyNode during creation is assumed to be the
@@ -349,7 +352,9 @@ class Base : public Implements3d<FeatureList<Feature>>
 
   public: inline std::size_t AddJoint(DartJoint *_joint)
   {
+    
     const std::size_t id = this->GetNextEntity();
+    
     this->joints.idToObject[id] = std::make_shared<JointInfo>();
     this->joints.idToObject[id]->joint = _joint;
     this->joints.objectToID[_joint] = id;
@@ -367,6 +372,7 @@ class Base : public Implements3d<FeatureList<Feature>>
   public: inline std::size_t AddShape(
       const ShapeInfo &_info)
   {
+    
     const std::size_t id = this->GetNextEntity();
     this->shapes.idToObject[id] = std::make_shared<ShapeInfo>(_info);
     this->shapes.objectToID[_info.node] = id;
@@ -374,7 +380,7 @@ class Base : public Implements3d<FeatureList<Feature>>
 
     return id;
   }
-
+  
   public: bool RemoveModelImpl(const std::size_t _worldID,
                                const std::size_t _modelID)
   {
@@ -419,11 +425,12 @@ class Base : public Implements3d<FeatureList<Feature>>
     this->models.RemoveEntity(skel);
     world->removeSkeleton(skel);
     return true;
-  }
+  }*/
 
   public: inline std::size_t GetWorldOfModelImpl(
               const std::size_t &_modelID) const
   {
+    /*
     if (this->models.HasEntity(_modelID))
     {
       auto parentIt = this->models.idToContainerID.find(_modelID);
@@ -435,10 +442,10 @@ class Base : public Implements3d<FeatureList<Feature>>
         }
         return this->GetWorldOfModelImpl(parentIt->second);
       }
-    }
+    }*/
     return this->GenerateInvalidId();
   }
-
+  /*
   public: EntityStorage<DartWorldPtr, std::string> worlds;
   public: EntityStorage<ModelInfoPtr, DartConstSkeletonPtr> models;
   public: EntityStorage<LinkInfoPtr, const DartBodyNode*> links;
@@ -449,7 +456,7 @@ class Base : public Implements3d<FeatureList<Feature>>
   /// \brief Map from the fully qualified link name (including the world name)
   /// to the BodyNode object. This is useful for keeping track of BodyNodes even
   /// as they move to other skeletons.
-  public: std::unordered_map<std::string, DartBodyNode*> linksByName;
+  public: std::unordered_map<std::string, DartBodyNode*> linksByName;*/
 };
 
 }

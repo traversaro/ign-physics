@@ -15,30 +15,35 @@
  *
  */
 
+/*
 #include <dart/dynamics/BodyNode.hpp>
-#include <dart/dynamics/FreeJoint.hpp>
+#include <dart/dynamics/FreeJoint.hpp>*/
 
 #include "LinkFeatures.hh"
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 /////////////////////////////////////////////////
 void LinkFeatures::AddLinkExternalForceInWorld(
     const Identity &_id, const LinearVectorType &_force,
     const LinearVectorType &_position)
 {
+  return;
+  /*
   auto bn = this->ReferenceInterface<LinkInfo>(_id)->link;
-  bn->addExtForce(_force, _position, false, false);
+  bn->addExtForce(_force, _position, false, false);*/
 }
 
 /////////////////////////////////////////////////
 void LinkFeatures::AddLinkExternalTorqueInWorld(
     const Identity &_id, const AngularVectorType &_torque)
 {
+  return;
+  /*
   auto bn = this->ReferenceInterface<LinkInfo>(_id)->link;
-  bn->addExtTorque(_torque, false);
+  bn->addExtTorque(_torque, false);*/
 }
 
 }

@@ -15,8 +15,8 @@
  *
  */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_WORLDFEATURES_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_WORLDFEATURES_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_WORLDFEATURES_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_WORLDFEATURES_HH_
 
 #include <string>
 
@@ -26,7 +26,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 struct WorldFeatureList : FeatureList<
   CollisionDetector,

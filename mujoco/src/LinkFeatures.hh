@@ -15,8 +15,8 @@
  *
  */
 
-#ifndef IGNITION_PHYSICS_DARTSIM_SRC_LINKFEATURES_HH_
-#define IGNITION_PHYSICS_DARTSIM_SRC_LINKFEATURES_HH_
+#ifndef IGNITION_PHYSICS_MUJOCO_SRC_LINKFEATURES_HH_
+#define IGNITION_PHYSICS_MUJOCO_SRC_LINKFEATURES_HH_
 
 #include <ignition/physics/Link.hh>
 
@@ -24,7 +24,7 @@
 
 namespace ignition {
 namespace physics {
-namespace dartsim {
+namespace mujoco {
 
 struct LinkFeatureList : FeatureList<
   AddLinkExternalForceTorque
