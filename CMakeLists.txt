@@ -85,6 +85,11 @@ ign_find_package(IgnBullet
   PKGCONFIG bullet
   PKGCONFIG_VER_COMPARISON >=)
 
+#--------------------------------------
+# Find bullet for the bullet plugin wrapper
+ign_find_package(IgnMuJoCo
+  REQUIRED_BY mujoco)
+
 message(STATUS "-------------------------------------------\n")
 
 set(IGNITION_PHYSICS_RESOURCE_DIR "${CMAKE_SOURCE_DIR}/resources")
@@ -98,7 +103,7 @@ set(IGNITION_PHYSICS_ENGINE_INSTALL_DIR
 # Configure the build
 #============================================================================
 ign_configure_build(QUIT_IF_BUILD_ERRORS
-  COMPONENTS sdf heightmap mesh dartsim tpe bullet)
+  COMPONENTS sdf heightmap mesh dartsim tpe bullet mujoco)
 
 
 #============================================================================
