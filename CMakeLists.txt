@@ -86,9 +86,12 @@ ign_find_package(IgnBullet
   PKGCONFIG_VER_COMPARISON >=)
 
 #--------------------------------------
-# Find bullet for the bullet plugin wrapper
+# Find mujoco for the mujoco plugin wrapper
 ign_find_package(IgnMuJoCo
-  REQUIRED_BY mujoco)
+  REQUIRED_BY mujoco mujocolib)
+
+ign_find_package(TINYXML2
+  REQUIRED_BY mujoco mujocolib)
 
 message(STATUS "-------------------------------------------\n")
 
