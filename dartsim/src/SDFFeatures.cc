@@ -1097,6 +1097,7 @@ Identity SDFFeatures::ConstructSdfJoint(
 
   {
     auto childsParentJoint = _child->getParentJoint();
+    std::string parentName = worldParent? "world" : _parent->getName();
     if (childsParentJoint->getType() != "FreeJoint")
     {
       gzerr << "Asked to create a joint between links "
@@ -1109,8 +1110,13 @@ Identity SDFFeatures::ConstructSdfJoint(
     else if (_parent && _parent->descendsFrom(_child))
     {
       // TODO(MXG): Add support for non-tree graph structures
+<<<<<<< HEAD
       gzerr << "Asked to create a closed kinematic chain between links "
              << "[" << _parent->getName() << "] and [" << _child->getName()
+=======
+      ignerr << "Asked to create a closed kinematic chain between links "
+             << "[" << parentName << "] and [" << _child->getName()
+>>>>>>> c4629f6b (Fix a crash due to an invalid pointer (#486))
              << "], but that is not supported by the dartsim wrapper yet.\n";
       return this->GenerateInvalidId();
     }
