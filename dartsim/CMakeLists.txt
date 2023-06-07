@@ -16,6 +16,8 @@ install(
   DESTINATION "${GZ_INCLUDE_INSTALL_DIR_FULL}")
 
 gz_get_libsources_and_unittests(sources test_sources)
+# Workaround for https://github.com/conda-forge/gz-physics-feedstock/pull/7#issuecomment-1580914751
+list(REMOVE_ITEM test_sources "src/Base_TEST.cc")
 
 # TODO(MXG): Think about a gz_add_plugin(~) macro for gz-cmake
 set(engine_name dartsim-plugin)
