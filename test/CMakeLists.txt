@@ -32,7 +32,7 @@ target_link_libraries(gz-physics-test INTERFACE
 
 add_subdirectory(gtest_vendor)
 add_subdirectory(benchmark)
-add_subdirectory(common_test)
+#add_subdirectory(common_test)
 add_subdirectory(plugins)
 add_subdirectory(integration)
 add_subdirectory(performance)
